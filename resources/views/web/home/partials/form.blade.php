@@ -37,3 +37,11 @@
 				<input type="hidden" name="lat" @if(request()->lat !== null) value="{{ request()->lat }}" @endif />
 				<input type="hidden" name="lng" @if(request()->lng !== null) value="{{ request()->lng }}" @endif/>
 			</form>	
+			<script>
+			$(document).ready(function() {
+				$('input[name="address"], input[name="city"]').on('keyup', function() {
+					$('input[name="lat"]').val('');
+					$('input[name="lng"]').val('');
+				});
+			});
+			</script>
