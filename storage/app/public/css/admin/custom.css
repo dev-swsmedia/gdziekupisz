@@ -1,0 +1,56 @@
+.cursor-pointer {
+	cursor: pointer !important;
+}
+
+section.content {
+	font-size: .9rem;
+}
+
+.fa-angle-left.open {
+	transform: rotate(-90deg);
+}
+
+.dataTables_filter {
+	margin-top: 10px;
+}
+
+.dataTables_length {
+	marign-bottom: 1rem !important;
+}
+/*
+ * SELECT 2
+ */
+ 
+.select2-selection {
+	min-height: 38px !important;
+	font-size: 1rem !important;
+}
+
+.select2-selection__arrow {
+	top: 6px !important;
+}
+
+.select2-selection__choice__display, .select2-selection__choice {
+	color: #000 !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+	max-height: 100px;
+	overflow-y: scroll;
+}
+
+/*
+ * BOOTBOX
+ */
+ 
+.bb-danger .modal-content {
+	background-color: #c82333;
+	color: white;
+}
+
+
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-treeview {
+	background-color: rgba(75, 84, 92, 0.68);
+	border-radius: 3px;
+}
