@@ -12,7 +12,7 @@
         
        	map.locate({watch: true})     
         
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+        L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
         
         L.control.scale({imperial: true, metric: true}).addTo(map);        
         
