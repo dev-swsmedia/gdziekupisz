@@ -50,6 +50,7 @@
                 });
                 
                 L.marker([position.coords.latitude, position.coords.longitude], {icon: icon}).addTo(map).bindPopup('Jesteś tutaj');
+                markers.push(L.marker([position.coords.latitude, position.coords.longitude]));
         	}); 
         	
         	@else        
@@ -61,7 +62,7 @@
                 });
                 
                 L.marker(['{{ request()->lat }}','{{ request()->lng }}'], {icon: icon}).addTo(map).bindPopup('Wybrany adres');      	
-        	
+        		markers.push(L.marker(['{{ request()->lat }}','{{ request()->lng }}']));
         	@endif
         	
         	var group = new L.featureGroup(markers);
