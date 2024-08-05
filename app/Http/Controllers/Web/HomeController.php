@@ -14,6 +14,11 @@ use App\Library\GeoCoding;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->meta();
+    }
+    
     public function index(Request $request) : View | RedirectResponse 
     {
         if($request->address !== null && $request->city !== null) {

@@ -145,7 +145,7 @@ class LoginController extends Controller
 	public function newPassword(PasswordRequest $request)
 	{
 		try {
-			$update = Administrator::where('email', $request->email)->update(['password' => Hash::make($request->password), 'is_old' => 0]);
+			$update = Administrator::where('email', $request->email)->update(['password' => Hash::make($request->password)]);
 
 			if($update)
 			{

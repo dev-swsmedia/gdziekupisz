@@ -23,6 +23,6 @@ class LogoutController extends Controller
 		
 		Auth::logout();
 				
-		return redirect('/adminsws');
+		return redirect(route('admin.index'));
 	}
 }
