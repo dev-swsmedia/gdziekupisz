@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Cache;
 
 class POSController extends Controller
 {
@@ -103,6 +104,8 @@ class POSController extends Controller
                 ]
                 );
             
+            Cache::delete('pos');
+            
             return redirect(route('admin.pos.index'))->with('message', 'Zapisano zmiany');            
         } catch (\Exception $e) {
             return redirect()->back()->withError(['message' => $e->getMessage()])->withInput();
@@ -113,6 +116,7 @@ class POSController extends Controller
     {
         try {
             Pos::find($id)->delete();
+            Cache::delete('pos');
             return redirect(route('admin.pos.index'))->with('message', 'Usunięto POS');
         } catch(\Exception $e) {
             return redirect(route('admin.pos.index'))->withErrors(['message' => 'Nie zapisano zmian ['.$e->getMessage().']']);
@@ -184,7 +188,7 @@ class POSController extends Controller
             }
 
             Pos::insert($insertArr);
-            
+            Cache::delete('pos');
             return redirect(route('admin.pos.index'))->with('message', 'Plik został zaimportowany');            
         } catch (\Exception $e) {
             return redirect(route('admin.pos.index'))->withErrors(['message' => 'Nie udało się zaimportować pliku z powodu błedów ['.$e->getMessage().']']);            
