@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -81,12 +82,14 @@ class HomeController extends Controller
                                 ->having('distance', '<=', $request->distance)
                                 ->orderBy('city', 'ASC')
                                 ->get();
-        } else {            
-            $vdata['pos'] = Cache::remember('pos', now()->addHours(1), function () {
-                return Pos::with(['category'])->orderBy('city', 'asc')->get();
-            });
-
+        } else {   
+            if(App::environment('production')) {            
+                $vdata['pos'] = Cache::remember('pos', now()->addHours(1), function () {
+                    return Pos::with(['category'])->orderBy('city', 'asc')->get();
+                });
+            } else {
                 $vdata['pos'] = Pos::with(['category'])->orderBy('city', 'asc')->get();
+            }
         }
 
         
